@@ -1,0 +1,6 @@
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/bin/Debug/ArnoldCInterpreter.exe
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/bin/Debug/ArnoldCInterpreter.pdb
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csprojAssemblyReference.cache
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csproj.CoreCompileInputs.cache
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.exe
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.pdb
