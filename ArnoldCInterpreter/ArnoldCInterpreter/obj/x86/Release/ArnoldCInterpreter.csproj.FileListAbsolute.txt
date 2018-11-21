@@ -1,0 +1,3 @@
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/bin/Release/ArnoldCInterpreter.exe
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Release/ArnoldCInterpreter.csproj.CoreCompileInputs.cache
+/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Release/ArnoldCInterpreter.exe
