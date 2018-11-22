@@ -6,7 +6,7 @@
   <import>
     <widget-library name="../bin/Debug/ArnoldCInterpreter.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="912 583">
+  <widget class="Gtk.Window" id="MainWindow" design-size="912 601">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -97,7 +97,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label1">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Hmmm</property>
+                    <property name="LabelProp" translatable="yes">Test Label</property>
                   </widget>
                   <packing>
                     <property name="X">16</property>
@@ -115,27 +115,13 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Button" id="button2">
-                    <property name="MemberName" />
-                    <property name="CanFocus">True</property>
-                    <property name="Type">TextOnly</property>
-                    <property name="Label" translatable="yes">Start</property>
-                    <property name="UseUnderline">True</property>
-                    <signal name="Clicked" handler="OnButton2Clicked" />
-                  </widget>
-                  <packing>
-                    <property name="X">16</property>
-                    <property name="Y">17</property>
-                  </packing>
-                </child>
-                <child>
                   <widget class="Gtk.Label" id="label3">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">label1</property>
+                    <property name="LabelProp" translatable="yes">Another Test Label</property>
                   </widget>
                   <packing>
-                    <property name="X">182</property>
-                    <property name="Y">157</property>
+                    <property name="X">18</property>
+                    <property name="Y">184</property>
                   </packing>
                 </child>
               </widget>
@@ -153,7 +139,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
-                    <property name="FixedHeightMode">True</property>
                   </widget>
                 </child>
               </widget>
@@ -186,9 +171,13 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Label" id="execute_window_label">
+          <widget class="Gtk.Button" id="execute_btn">
             <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">E X E C U T E</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">TextOnly</property>
+            <property name="Label" translatable="yes">EXECUTE</property>
+            <property name="UseUnderline">True</property>
+            <signal name="Clicked" handler="OnExecuteBtnClicked" after="yes" />
           </widget>
           <packing>
             <property name="Position">2</property>

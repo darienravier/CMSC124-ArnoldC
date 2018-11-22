@@ -50,7 +50,7 @@ public partial class MainWindow : Gtk.Window
         a.RetVal = true;
     }
 
-    public void OnButton2Clicked(object sender, EventArgs e)
+    protected void OnExecuteBtnClicked(object sender, EventArgs e)
     {
         List<Token> symbolTable = new List<Token>();
         Token tok = new Token();
@@ -70,8 +70,8 @@ public partial class MainWindow : Gtk.Window
         //treeview1.AppendColumn(column);
 
         Gtk.NodeStore store = new NodeStore(typeof(LexemeTableNode));
-        store.AddNode(new LexemeTableNode("The Beatles", "2"));
-        store.AddNode(new LexemeTableNode("Peter Gabriel", "2"));
+        //store.AddNode(new LexemeTableNode("The Beatles", "2"));
+        //store.AddNode(new LexemeTableNode("Peter Gabriel", "2"));
         nodeview2.AppendColumn("Artist", new Gtk.CellRendererText(), "text", 0);
         nodeview2.AppendColumn("Class", new Gtk.CellRendererText(), "text", 1);
         nodeview2.ShowAll();
@@ -152,18 +152,18 @@ public partial class MainWindow : Gtk.Window
         }
         else
         {
-           
+
             bool isDelimited = false;
-            
+
 
             for (int i = 0; i < symbolTable.Count; i++)
             {
-             
+
                 string lexeme = symbolTable[i].lexeme;
 
                 switch (lexeme)
                 {
-                   
+
                     case "HEY CHRISTMAS TREE":
                         if (symbolTable[i + 1].type == "non-keyword identifier")
                         {
@@ -235,7 +235,7 @@ public partial class MainWindow : Gtk.Window
                                         }
                                         i = i + (j / 2);
 
-                               
+
                                     }
                                     else
                                     {
@@ -385,16 +385,19 @@ public partial class MainWindow : Gtk.Window
 
                                 if (symbolTable[j].lexeme == "BULLSHIT")
                                 {
-                                    if (symbolTable[j + 1].type == "keyword" && symbolTable[j + 1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC"){
+                                    if (symbolTable[j + 1].type == "keyword" && symbolTable[j + 1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC")
+                                    {
                                         i += 1;
                                         Console.WriteLine("HELLO");
                                         break;
-                                    }else{
+                                    }
+                                    else
+                                    {
                                         Console.WriteLine("Invalid syntax: BULLSHIT statement needs an argument.");
                                         exitLoop = true;
                                         break;
                                     }
-                                 
+
 
                                 }
                             }
@@ -453,7 +456,8 @@ public partial class MainWindow : Gtk.Window
         //SEMANTIC ANALYSIS
         //parse lexemes that are integers to legitimate integer
 
-        if (exitLoop == false){ //if it passes the syntactic analysis
+        if (exitLoop == false)
+        { //if it passes the syntactic analysis
             List<Token> identifiers = new List<Token>();
 
             for (int i = 0; i < symbolTable.Count; i++)
@@ -512,10 +516,13 @@ public partial class MainWindow : Gtk.Window
                         }
                         break;
                     case "TALK TO THE HAND":
-                        if (symbolTable[i+1].type == "string"){
+                        if (symbolTable[i + 1].type == "string")
+                        {
                             Console.WriteLine(symbolTable[i + 1].lexeme);
                             break;
-                        }else{
+                        }
+                        else
+                        {
                             Console.WriteLine(symbolTable[i + 1].value);
                             break;
                         }
@@ -526,12 +533,15 @@ public partial class MainWindow : Gtk.Window
                         string input = Console.ReadLine(); //pero for now ito muna
                         //kapag may sariling textbox, pwedeng  symbolTable[i + 1].value = textLabel.text parang ganyan ->pero siyempre iparse mo to int
                         //symbolTable[i + 1].value = Int32.Parse(input);
-                        Console.WriteLine(symbolTable[i+1].value);
+                        Console.WriteLine(symbolTable[i + 1].value);
                         break;
                     case "BECAUSE I'M GOING TO SAY PLEASE":
-                        if (symbolTable[i+1].value == 1){
+                        if (symbolTable[i + 1].value == 1)
+                        {
                             break;
-                        }else{
+                        }
+                        else
+                        {
 
                         }
                         break;
@@ -551,14 +561,6 @@ public partial class MainWindow : Gtk.Window
             }
             foreach (var item in identifiers) Console.WriteLine(item);
         }
-
-          
-
     }
-
-
-
-
-
 }
 
