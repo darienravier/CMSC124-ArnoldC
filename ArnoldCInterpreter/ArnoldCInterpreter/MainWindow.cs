@@ -22,6 +22,22 @@ public partial class MainWindow : Gtk.Window
 
         }
     }
+
+    class LexemeTableNode : Gtk.TreeNode
+    {
+        public LexemeTableNode(string lexeme, string classification)
+        {
+            Lexeme = lexeme;
+            Classification = classification;
+        }
+
+        [Gtk.TreeNodeValue(Column = 0)]
+        public string Lexeme;
+
+        [Gtk.TreeNodeValue(Column = 1)]
+        public string Classification;
+    }
+
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
@@ -40,8 +56,28 @@ public partial class MainWindow : Gtk.Window
         Token tok = new Token();
         symbolTable.Add(tok);
 
-        string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/input.arnoldc");
+        textview1.Buffer.Text = "Di ko gets yung GtkNodeView fml";
+        //label3.Text = "Tite";
 
+        //treeview1.Model = new Gtk.ListStore(typeof(string));
+
+        //var column = new TreeViewColumn();
+        //column.Title = "Column Name";
+        //column.Clickable = false;
+        //var renderer = new CellRendererText();
+        //column.PackStart(renderer, true);
+        //column.AddAttribute(renderer, "text", 0);
+        //treeview1.AppendColumn(column);
+
+        Gtk.NodeStore store = new NodeStore(typeof(LexemeTableNode));
+        store.AddNode(new LexemeTableNode("The Beatles", "2"));
+        store.AddNode(new LexemeTableNode("Peter Gabriel", "2"));
+        nodeview2.AppendColumn("Artist", new Gtk.CellRendererText(), "text", 0);
+        nodeview2.AppendColumn("Class", new Gtk.CellRendererText(), "text", 1);
+        nodeview2.ShowAll();
+
+        string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/input.arnoldc");
+        //string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/input.arnoldc");
 
         string contents_no_white_spaces = Regex.Replace(contents, " {2,}", " "); //removes multiples spaces in the string 
 
@@ -525,3 +561,4 @@ public partial class MainWindow : Gtk.Window
 
 
 }
+

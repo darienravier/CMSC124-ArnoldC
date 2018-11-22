@@ -1,8 +1,7 @@
 ﻿<Properties StartupConfiguration="{EA4DA8D2-D3A3-4E0F-A19B-87D711478B63}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="ArnoldCInterpreter/MainWindow.cs">
     <Files>
-      <File FileName="ArnoldCInterpreter/Program.cs" Line="13" Column="15" />
-      <File FileName="ArnoldCInterpreter/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="ArnoldCInterpreter/MainWindow.cs" Line="27" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
