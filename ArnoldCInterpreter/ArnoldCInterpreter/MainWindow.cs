@@ -38,10 +38,7 @@ public partial class MainWindow : Gtk.Window
         public string Classification;
     }
 
-    public MainWindow() : base(Gtk.WindowType.Toplevel)
-    {
-        Build();
-    }
+    public MainWindow() : base(Gtk.WindowType.Toplevel) => Build();
 
 
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
@@ -57,24 +54,29 @@ public partial class MainWindow : Gtk.Window
         symbolTable.Add(tok);
 
         textview1.Buffer.Text = "Di ko gets yung GtkNodeView fml";
-        //label3.Text = "Tite";
 
-        //treeview1.Model = new Gtk.ListStore(typeof(string));
-
-        //var column = new TreeViewColumn();
-        //column.Title = "Column Name";
-        //column.Clickable = false;
-        //var renderer = new CellRendererText();
-        //column.PackStart(renderer, true);
-        //column.AddAttribute(renderer, "text", 0);
-        //treeview1.AppendColumn(column);
-
-        Gtk.NodeStore store = new NodeStore(typeof(LexemeTableNode));
-        //store.AddNode(new LexemeTableNode("The Beatles", "2"));
-        //store.AddNode(new LexemeTableNode("Peter Gabriel", "2"));
-        nodeview2.AppendColumn("Artist", new Gtk.CellRendererText(), "text", 0);
-        nodeview2.AppendColumn("Class", new Gtk.CellRendererText(), "text", 1);
-        nodeview2.ShowAll();
+        //Symbol Table -> TreeView
+        treeview1.Model = new Gtk.ListStore(typeof(string));
+        //Identifier Column
+        var identifierColumn = new TreeViewColumn
+        {
+            Title = "Identifier",
+            Clickable = false
+        };
+        var identificationRenderer = new CellRendererText();
+        identifierColumn.PackStart(identificationRenderer, true);
+        identifierColumn.AddAttribute(identificationRenderer, "text", 0);
+        treeview1.AppendColumn(identifierColumn);
+        //Value Column
+        var valueColumn = new TreeViewColumn
+        {
+            Title = "Value",
+            Clickable = false
+        };
+        var valueRenderer = new CellRendererText();
+        valueColumn.PackStart(valueRenderer, true);
+        valueColumn.AddAttribute(valueRenderer, "text", 0);
+        treeview1.AppendColumn(valueColumn);
 
         string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/input.arnoldc");
         //string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/input.arnoldc");

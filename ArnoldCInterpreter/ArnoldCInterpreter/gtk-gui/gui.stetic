@@ -135,7 +135,7 @@
                 <property name="MemberName" />
                 <property name="ShadowType">In</property>
                 <child>
-                  <widget class="Gtk.NodeView" id="nodeview2">
+                  <widget class="Gtk.TreeView" id="treeview2">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
