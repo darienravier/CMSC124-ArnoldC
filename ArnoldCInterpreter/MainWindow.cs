@@ -40,7 +40,7 @@ public partial class MainWindow : Gtk.Window
         Token tok = new Token();
         symbolTable.Add(tok);
 
-        string contents = File.ReadAllText("/home/fjmanglicmot/Projects/ArnoldCInterpreter/ArnoldCInterpreter/input.arnoldc");
+        string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/input.arnoldc");
 
 
         string contents_no_white_spaces = Regex.Replace(contents, " {2,}", " "); //removes multiples spaces in the string 
