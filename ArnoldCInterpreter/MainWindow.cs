@@ -475,6 +475,66 @@ public partial class MainWindow : Gtk.Window
 
                         }
                         break;
+                        
+                    case "GET YOUR ASS TO MARS":
+                        string next_lex = symbolTable[i + 1].lexeme;
+
+                        for (int j = 0; i < symbolTable.Count; i++){
+                            if(symbolTable[j].lexeme = next_lex){
+                                break;
+                            }
+
+                            if(i < j){
+                                Console.WriteLine("Error no initialized variable");
+                                exit(1);
+                            }
+                        }
+                        break;
+
+                    case "I WANT TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY":
+                        string next_lex = symbolTable[i + 1].lexeme;
+
+                        for (int j = 0; i < symbolTable.Count; i++){
+                            if(symbolTable[j].lexeme = next_lex){
+                                break;
+                            }
+
+                            if(i < j){
+                                Console.WriteLine("Error no initialized variable");
+                                exit(1);
+                            }
+                        }
+                        break;
+
+                    case "BECAUSE I'M GOING TO SAY PLEASE":
+                        string next_lex = symbolTable[i + 1].lexeme;
+
+                        for (int j = 0; i < symbolTable.Count; i++){
+                            if(symbolTable[j].lexeme = next_lex){
+                                break;
+                            }
+
+                            if(i < j){
+                                Console.WriteLine("Error no initialized variable");
+                                exit(1);
+                            }
+                        }
+                        break;
+
+                    case "STICK AROUND":
+                        string next_lex = symbolTable[i + 1].lexeme;
+
+                        for (int j = 0; i < symbolTable.Count; i++){
+                            if(symbolTable[j].lexeme = next_lex){
+                                break;
+                            }
+
+                            if(i < j){
+                                Console.WriteLine("Error no initialized variable");
+                                exit(1);
+                            }
+                        }
+                        break;
                     
                     default:
                         break;
