@@ -96,7 +96,7 @@ public partial class MainWindow : Gtk.Window
 
 
 
-        string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/input.arnoldc");
+        string contents = File.ReadAllText("/home/darienravier/Documents/CMSC124-ArnoldC/input.arnoldc");
         //string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/input.arnoldc");
 
         //Displays contents in the codeView
@@ -520,6 +520,9 @@ public partial class MainWindow : Gtk.Window
         }
         //SEMANTIC ANALYSIS
         //parse lexemes that are integers to legitimate integer
+
+        int iterations = 0;
+        int loop_length = 0;
 
         bool exitLoopSemantic = false;
         if (exitLoop == false)
@@ -1138,16 +1141,71 @@ public partial class MainWindow : Gtk.Window
                         symbolTable[i + 1].value = Int32.Parse(input);
                         //Console.WriteLine(symbolTable[i + 1].value);
                         break;
-                        /*case "BECAUSE I'M GOING TO SAY PLEASE":
-                        if (symbolTable[i + 1].value == 1)
+                    /*case "BECAUSE I'M GOING TO SAY PLEASE":
+                    if (symbolTable[i + 1].value == 1)
+                    {
+                        break;
+                    }
+                    else
+                    {
+
+                    }
+                    break;*/
+
+                    case "STICK AROUND":
+                        string next_lex = symbolTable[i + 1].lexeme;
+
+                        for (int j = 0; i < symbolTable.Count; i++)
                         {
-                            break;
+                            if (symbolTable[j].lexeme == next_lex)
+                            {
+                                break;
+                            }
+
+                            if (i < j)
+                            {
+                                Console.WriteLine("Error no initialized variable");
+                                consoleScreen.Insert(consoleScreen.EndIter, "\nError no initialized variable");
+                                break;
+                            }
+                        }
+
+                        if (symbolTable[i + 1].type == "non-keyword identifer" || symbolTable[i + 1].type == "integer")
+                        {
+                            iterations = symbolTable[i + 1].value;
                         }
                         else
                         {
-
+                            Console.WriteLine("Error: expected integer");
+                            consoleScreen.Insert(consoleScreen.EndIter, "\nError: expected integer");
                         }
-                        break;*/
+
+                        loop_length = 0;
+                        for (int k = i + 2; k < symbolTable.Count; k++)
+                        {
+                            if (symbolTable[k].lexeme != "CHILL")
+                            {
+                                loop_length += 1;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        i++;
+                        break;
+
+                    case "CHILL":
+                        Console.WriteLine("iterations left: {0}", iterations);
+                        consoleScreen.Insert(consoleScreen.EndIter, "\nIterations Left: " + iterations);
+                        Console.WriteLine("Loop Length: {0}", loop_length);
+                        consoleScreen.Insert(consoleScreen.EndIter, "\nLoop Length: " + loop_length);
+                        if (iterations != 0)
+                        {
+                            i -= loop_length;
+                        }
+                        break;
+
                     default:
                         break;
                 }

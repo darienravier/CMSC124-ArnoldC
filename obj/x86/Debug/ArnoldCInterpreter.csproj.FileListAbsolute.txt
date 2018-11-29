@@ -22,3 +22,9 @@
 /home/darienravier/Documents/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csproj.CoreCompileInputs.cache
 /home/darienravier/Documents/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.exe
 /home/darienravier/Documents/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.pdb
+/home/darienravier/Documents/CMSC124-ArnoldC/bin/Debug/ArnoldCInterpreter.exe
+/home/darienravier/Documents/CMSC124-ArnoldC/bin/Debug/ArnoldCInterpreter.pdb
+/home/darienravier/Documents/CMSC124-ArnoldC/obj/x86/Debug/ArnoldCInterpreter.csprojAssemblyReference.cache
+/home/darienravier/Documents/CMSC124-ArnoldC/obj/x86/Debug/ArnoldCInterpreter.csproj.CoreCompileInputs.cache
+/home/darienravier/Documents/CMSC124-ArnoldC/obj/x86/Debug/ArnoldCInterpreter.exe
+/home/darienravier/Documents/CMSC124-ArnoldC/obj/x86/Debug/ArnoldCInterpreter.pdb
