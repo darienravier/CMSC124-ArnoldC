@@ -10,3 +10,15 @@
 /home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csproj.CoreCompileInputs.cache
 /home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.exe
 /home/darienravier/Documents/ArnoldCInterpreter/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.pdb
+/home/darienravier/Documents/CMSC124-ArnoldC/ArnoldCInterpreter/ArnoldCInterpreter/bin/Debug/ArnoldCInterpreter.exe
+/home/darienravier/Documents/CMSC124-ArnoldC/ArnoldCInterpreter/ArnoldCInterpreter/bin/Debug/ArnoldCInterpreter.pdb
+/home/darienravier/Documents/CMSC124-ArnoldC/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csprojAssemblyReference.cache
+/home/darienravier/Documents/CMSC124-ArnoldC/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csproj.CoreCompileInputs.cache
+/home/darienravier/Documents/CMSC124-ArnoldC/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.exe
+/home/darienravier/Documents/CMSC124-ArnoldC/ArnoldCInterpreter/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.pdb
+/home/darienravier/Documents/ArnoldCInterpreter/bin/Debug/ArnoldCInterpreter.exe
+/home/darienravier/Documents/ArnoldCInterpreter/bin/Debug/ArnoldCInterpreter.pdb
+/home/darienravier/Documents/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csprojAssemblyReference.cache
+/home/darienravier/Documents/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.csproj.CoreCompileInputs.cache
+/home/darienravier/Documents/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.exe
+/home/darienravier/Documents/ArnoldCInterpreter/obj/x86/Debug/ArnoldCInterpreter.pdb

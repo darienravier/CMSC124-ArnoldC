@@ -74,60 +74,21 @@
             <property name="Homogeneous">True</property>
             <property name="Spacing">6</property>
             <child>
-              <widget class="Gtk.Fixed" id="fixed1">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow3">
                 <property name="MemberName" />
-                <property name="WidthRequest">300</property>
-                <property name="HeightRequest">250</property>
-                <property name="HasWindow">False</property>
+                <property name="ShadowType">In</property>
                 <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <widget class="Gtk.Label" id="label1">
+                  <widget class="Gtk.TextView" id="codeView">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Test Label</property>
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                    <property name="Text" translatable="yes" />
                   </widget>
-                  <packing>
-                    <property name="X">16</property>
-                    <property name="Y">68</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Label" id="label2">
-                    <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">No errors</property>
-                  </widget>
-                  <packing>
-                    <property name="X">18</property>
-                    <property name="Y">209</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="Gtk.Label" id="label3">
-                    <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Another Test Label</property>
-                  </widget>
-                  <packing>
-                    <property name="X">18</property>
-                    <property name="Y">184</property>
-                  </packing>
                 </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
-                <property name="AutoSize">False</property>
+                <property name="AutoSize">True</property>
               </packing>
             </child>
             <child>
@@ -135,7 +96,7 @@
                 <property name="MemberName" />
                 <property name="ShadowType">In</property>
                 <child>
-                  <widget class="Gtk.TreeView" id="treeview2">
+                  <widget class="Gtk.TreeView" id="lexemeView">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
@@ -152,7 +113,7 @@
                 <property name="MemberName" />
                 <property name="ShadowType">In</property>
                 <child>
-                  <widget class="Gtk.TreeView" id="treeview1">
+                  <widget class="Gtk.TreeView" id="symbolTableView">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
@@ -191,7 +152,7 @@
             <property name="MemberName" />
             <property name="ShadowType">In</property>
             <child>
-              <widget class="Gtk.TextView" id="textview1">
+              <widget class="Gtk.TextView" id="consoleView">
                 <property name="MemberName" />
                 <property name="HeightRequest">250</property>
                 <property name="CanFocus">True</property>
