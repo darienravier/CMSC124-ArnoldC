@@ -536,7 +536,7 @@ public partial class MainWindow : Gtk.Window
 
         int iterations = 0;
         int loop_length = 0;
-        bool if_loop = false;
+        bool ifFLAG = false;
 
         bool exitLoopSemantic = false;
         if (exitLoop == false)
@@ -1156,7 +1156,7 @@ public partial class MainWindow : Gtk.Window
                         //Console.WriteLine(symbolTable[i + 1].value);
                         break;
                     case "BECAUSE I'M GOING TO SAY PLEASE":
-                        string next_lex  = symbolTable[i+1].lexeme;
+                        string nextLex  = symbolTable[i+1].lexeme;
                         
                         for (int j = 0; j < i; j++)
                         {
@@ -1174,7 +1174,7 @@ public partial class MainWindow : Gtk.Window
                         }
 
                         if(symbolTable[i+1].value){
-                            if_flag = true;
+                            ifFLAG = true;
                             i++;
 
                         }else{
@@ -1185,7 +1185,7 @@ public partial class MainWindow : Gtk.Window
                     break;
 
                     case "BULLSHIT":
-                        if(if_flag){
+                        if(ifFLAG){
                             while(symbolTable[i+1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC"){
                                 i++;
                             }
@@ -1193,7 +1193,7 @@ public partial class MainWindow : Gtk.Window
                         break;
 
                     case "YOU HAVE NO RESPECT FOR LOGIC":
-                        if_flag = false;
+                        ifFLAG = false;
                         break;
 
                     case "STICK AROUND":
