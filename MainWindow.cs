@@ -35,11 +35,20 @@ public partial class MainWindow : Gtk.Window
         a.RetVal = true;
     }
 
+    protected void OnFileChooserBtnClicked(object sender, EventArgs e){
+        //Clears the codeview
+        codeView.Buffer.Text = "";
+    }
+
     protected void OnExecuteBtnClicked(object sender, EventArgs e)
     {
         List<Token> symbolTable = new List<Token>();
         Token tok = new Token();
         symbolTable.Add(tok);
+
+        //Clears the consoleview
+        //For any repeat of the execute button
+        consoleView.Buffer.Text = "";
 
         consoleView.Buffer.Text = "Here are the invalid identifiers:\n";
 
@@ -1233,5 +1242,6 @@ public partial class MainWindow : Gtk.Window
 
 
     }
+
 }
 
