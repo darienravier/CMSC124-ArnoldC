@@ -6,7 +6,7 @@
   <import>
     <widget-library name="../bin/Debug/ArnoldCInterpreter.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="912 601">
+  <widget class="Gtk.Window" id="MainWindow" design-size="912 659">
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
@@ -165,6 +165,32 @@
           <packing>
             <property name="Position">3</property>
             <property name="AutoSize">True</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Label" id="inputLabel">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Input Here</property>
+          </widget>
+          <packing>
+            <property name="Position">4</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Entry" id="inputEntry">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="IsEditable">True</property>
+            <property name="InvisibleChar">•</property>
+          </widget>
+          <packing>
+            <property name="Position">5</property>
+            <property name="AutoSize">True</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
           </packing>
         </child>
       </widget>

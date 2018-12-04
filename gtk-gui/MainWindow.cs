@@ -33,6 +33,10 @@ public partial class MainWindow
 
 	private global::Gtk.TextView consoleView;
 
+	private global::Gtk.Label inputLabel;
+
+	private global::Gtk.Entry inputEntry;
+
 	protected virtual void Build()
 	{
 		global::Stetic.Gui.Initialize(this);
@@ -152,13 +156,33 @@ public partial class MainWindow
 		this.vbox1.Add(this.GtkScrolledWindow2);
 		global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.GtkScrolledWindow2]));
 		w14.Position = 3;
+		// Container child vbox1.Gtk.Box+BoxChild
+		this.inputLabel = new global::Gtk.Label();
+		this.inputLabel.Name = "inputLabel";
+		this.inputLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Input Here");
+		this.vbox1.Add(this.inputLabel);
+		global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.inputLabel]));
+		w15.Position = 4;
+		w15.Expand = false;
+		w15.Fill = false;
+		// Container child vbox1.Gtk.Box+BoxChild
+		this.inputEntry = new global::Gtk.Entry();
+		this.inputEntry.CanFocus = true;
+		this.inputEntry.Name = "inputEntry";
+		this.inputEntry.IsEditable = true;
+		this.inputEntry.InvisibleChar = '•';
+		this.vbox1.Add(this.inputEntry);
+		global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.inputEntry]));
+		w16.Position = 5;
+		w16.Expand = false;
+		w16.Fill = false;
 		this.Add(this.vbox1);
 		if ((this.Child != null))
 		{
 			this.Child.ShowAll();
 		}
 		this.DefaultWidth = 912;
-		this.DefaultHeight = 601;
+		this.DefaultHeight = 659;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.file_chooser_btn.Clicked += new global::System.EventHandler(this.OnFileChooserBtnClicked);

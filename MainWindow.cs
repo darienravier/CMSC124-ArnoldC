@@ -38,6 +38,10 @@ public partial class MainWindow : Gtk.Window
     protected void OnFileChooserBtnClicked(object sender, EventArgs e){
         //Clears the codeview
         codeView.Buffer.Text = "";
+
+        //Input test case
+        string text = inputEntry.Text;
+        codeView.Buffer.Insert(codeView.Buffer.EndIter, text);
     }
 
     protected void OnExecuteBtnClicked(object sender, EventArgs e)
@@ -1224,6 +1228,7 @@ public partial class MainWindow : Gtk.Window
 
             foreach (var item in identifiers) Console.WriteLine(item);
 
+            //symbolTableView.Model.Clear();
             //Prints values in the Symbol Table
             //This just gets all the non-keyword identifier
             for (int i = 0; i < identifiers.Count; i++)
@@ -1231,6 +1236,7 @@ public partial class MainWindow : Gtk.Window
                 symbolTableListStore.AppendValues(identifiers[i].lexeme, identifiers[i].value);
             }
 
+            //lexemeView.Model.Clear();
             //Prints the values in the Lexeme Table
             for (int i = 0; i < matches.Count; i++)
             {
