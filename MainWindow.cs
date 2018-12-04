@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Gtk;
 using System.Collections.Generic;
 using System.IO;
@@ -35,24 +35,11 @@ public partial class MainWindow : Gtk.Window
         a.RetVal = true;
     }
 
-    protected void OnFileChooserBtnClicked(object sender, EventArgs e){
-        //Clears the codeview
-        codeView.Buffer.Text = "";
-
-        //Input test case
-        string text = inputEntry.Text;
-        codeView.Buffer.Insert(codeView.Buffer.EndIter, text);
-    }
-
     protected void OnExecuteBtnClicked(object sender, EventArgs e)
     {
         List<Token> symbolTable = new List<Token>();
         Token tok = new Token();
         symbolTable.Add(tok);
-
-        //Clears the consoleview
-        //For any repeat of the execute button
-        consoleView.Buffer.Text = "";
 
         consoleView.Buffer.Text = "Here are the invalid identifiers:\n";
 
@@ -109,8 +96,8 @@ public partial class MainWindow : Gtk.Window
 
 
 
-        string contents = File.ReadAllText("/home/darienravier/Documents/CMSC124-ArnoldC/input.arnoldc");
-        //string contents = File.ReadAllText("/home/darienravier/Documents/ArnoldCInterpreter/input.arnoldc");
+        string contents = File.ReadAllText("/home/fjmanglicmot/Desktop/CMSC124-ArnoldC-master/ArnoldCInterpreter/input.arnoldc");
+
 
         //Displays contents in the codeView
         codeScreen.Insert(codeScreen.EndIter, contents);
@@ -204,6 +191,7 @@ public partial class MainWindow : Gtk.Window
         if (symbolTable[0].lexeme != "IT'S SHOWTIME" || symbolTable[end_of_file].lexeme != "YOU HAVE BEEN TERMINATED")
         {
             consoleScreen.Insert(consoleScreen.EndIter, "\nError: No declaration of starting and/or terminating identifier.");
+            exitLoop = true;
         }
         else
         {
@@ -381,7 +369,7 @@ public partial class MainWindow : Gtk.Window
                     case "TALK TO THE HAND":
                         if (symbolTable[i + 1].type == "string" || symbolTable[i + 1].type == "non-keyword identifier")
                         {
-
+                            continue;
                         }
                         else
                         {
@@ -462,7 +450,7 @@ public partial class MainWindow : Gtk.Window
                                     if (symbolTable[j + 1].type == "keyword" && symbolTable[j + 1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC")
                                     {
                                         i += 1;
-                                        Console.WriteLine("HELLO");
+
                                         break;
                                     }
                                     else
@@ -534,6 +522,7 @@ public partial class MainWindow : Gtk.Window
         //SEMANTIC ANALYSIS
         //parse lexemes that are integers to legitimate integer
 
+
         int iterations = 0;
         int loop_length = 0;
         bool ifFLAG = false;
@@ -572,16 +561,16 @@ public partial class MainWindow : Gtk.Window
 
                                                         if (symbolTable[j].lexeme == symbolTable[i + 1].lexeme)
                                                             {
-                                isDeclared = true;
+                                                             isDeclared = true;
                                                                 //USE THES CODE BLOCKS FOR EXECUTION
                                                                //symbolTable[i + 1].value = Int32.Parse(symbolTable[i + 3].lexeme); //HERE IS MY INVITATION
                                                                  foreach (var item in symbolTable)
-                                {
+                                                                 {
                                                                          if (item.lexeme == symbolTable[i + 1].lexeme)
-                                    {
+                                                                         {
 
-                                        item.value = Int32.Parse(symbolTable[i + 3].lexeme);
-                                        identifiers.Add(symbolTable[i + 1]);
+                                                                                item.value = Int32.Parse(symbolTable[i + 3].lexeme);
+                                                                                identifiers.Add(symbolTable[i + 1]);
                                                                              }
 
                                                                      }
@@ -589,30 +578,30 @@ public partial class MainWindow : Gtk.Window
 
                                                                 if (Regex.IsMatch(symbolTable[i + 4].lexeme, arithmetic_operators) || Regex.IsMatch(symbolTable[i + 4].lexeme, logical_operators))
                                                                     {
-                                    int l = 0;
+                                                                    int l = 0;
                                                                         //to determine how many arithmetic operations to do
                                                                         while (symbolTable[i + 4 + l].lexeme != "ENOUGH TALK")
                                                                            {
                                                                                 if (Regex.IsMatch(symbolTable[i + 4 + l].lexeme, arithmetic_operators) || Regex.IsMatch(symbolTable[i + 4].lexeme, logical_operators))
                                                                                     {
-                                            l += 2;
+                                                                                                     l += 2;
                                                                                    }
 
 
                                                                             }
                                                                         for (int k = 0; k < l; k += 2)
                                                                             { //j number of operators
-                                        string arith_operators = symbolTable[i + 4 + k].lexeme; //symbolTable[i + 4 + k + 1].lexeme is the integer part
-                                        int arithmeticParameter = i + 4 + k + 1;
+                                                                                string arith_operators = symbolTable[i + 4 + k].lexeme; //symbolTable[i + 4 + k + 1].lexeme is the integer part
+                                                                                int arithmeticParameter = i + 4 + k + 1;
 
                                                                                 switch (arith_operators)
-                                        {
+                                                                                          {
                                                                                         case "GET UP":
                         
                                                                         if (symbolTable[arithmeticParameter].type == "integer")
                                                                             {
-                            symbolTable[i + 1].value += Int32.Parse(symbolTable[arithmeticParameter].lexeme);
-                            identifiers.Add(symbolTable[i + 1]);
+                                                                                            symbolTable[i + 1].value += Int32.Parse(symbolTable[arithmeticParameter].lexeme);
+                                                                                            identifiers.Add(symbolTable[i + 1]);
                                                                             }
                                                                        else if (symbolTable[arithmeticParameter].type == "non-keyword identifier")
                                                                            {
@@ -624,8 +613,8 @@ public partial class MainWindow : Gtk.Window
                                                                                        if (item.lexeme == symbolTable[arithmeticParameter].lexeme)
                                                                                             {
                                     
-                                    symbolTable[i + 1].value += item.value;
-                                    identifiers.Add(symbolTable[i + 1]);
+                                                                                                symbolTable[i + 1].value += item.value;
+                                                                                                identifiers.Add(symbolTable[i + 1]);
                                     
                                                                                           }
                                                                                     }
@@ -637,8 +626,8 @@ public partial class MainWindow : Gtk.Window
                                                                     case "GET DOWN":
                                                                         if (symbolTable[arithmeticParameter].type == "integer")
                                                                             {
-                            symbolTable[i + 1].value -= Int32.Parse(symbolTable[arithmeticParameter].lexeme);
-                            identifiers.Add(symbolTable[i + 1]);
+                                                                            symbolTable[i + 1].value -= Int32.Parse(symbolTable[arithmeticParameter].lexeme);
+                                                                            identifiers.Add(symbolTable[i + 1]);
                                                                             }
                                                                         else if (symbolTable[i + 4 + k + 1].type == "non-keyword identifier")
                                                                             {
@@ -649,8 +638,8 @@ public partial class MainWindow : Gtk.Window
                                                                                         if (item.lexeme == symbolTable[arithmeticParameter].lexeme)
                                                                                             {
                                                                                                 //Console.WriteLine(item);
-                                    symbolTable[i + 1].value -= item.value;
-                                    identifiers.Add(symbolTable[i + 1]);
+                                                                                                symbolTable[i + 1].value -= item.value;
+                                                                                                identifiers.Add(symbolTable[i + 1]);
                                                                                             }
                                                                                     }
                                                                            }
@@ -660,8 +649,8 @@ public partial class MainWindow : Gtk.Window
                                                                     case "YOU'RE FIRED":
                                                                        if (symbolTable[arithmeticParameter].type == "integer")
                                                                             {
-                            symbolTable[i + 1].value *= Int32.Parse(symbolTable[arithmeticParameter].lexeme);
-                            identifiers.Add(symbolTable[i + 1]);
+                                                                                symbolTable[i + 1].value *= Int32.Parse(symbolTable[arithmeticParameter].lexeme);
+                                                                                identifiers.Add(symbolTable[i + 1]);
                                                                             }
                                                                         else if (symbolTable[i + 4 + k + 1].type == "non-keyword identifier")
                                                                             {
@@ -672,8 +661,8 @@ public partial class MainWindow : Gtk.Window
                                                                                         if (item.lexeme == symbolTable[arithmeticParameter].lexeme)
                                                                                             {
                                                                                                 //Console.WriteLine(item);
-                                    symbolTable[i + 1].value = symbolTable[i + 1].value * item.value;
-                                    identifiers.Add(symbolTable[i + 1]);
+                                                                                                symbolTable[i + 1].value = symbolTable[i + 1].value * item.value;
+                                                                                                identifiers.Add(symbolTable[i + 1]);
                                                                                             }
                                                                                     }
                                                                             }
@@ -683,20 +672,20 @@ public partial class MainWindow : Gtk.Window
                                                                     case "HE HAD TO SPLIT":
                                                                         if (symbolTable[arithmeticParameter].type == "integer") //CATCH MO YUNG DIVISION BY ZERO
                                                                             {
-                            symbolTable[i + 1].value = symbolTable[i + 1].value / Int32.Parse(symbolTable[arithmeticParameter].lexeme);
-                            identifiers.Add(symbolTable[i + 1]);
+                                                                                        symbolTable[i + 1].value = symbolTable[i + 1].value / Int32.Parse(symbolTable[arithmeticParameter].lexeme);
+                                                                                        identifiers.Add(symbolTable[i + 1]);
                                                                             }
                                                                         else if (symbolTable[i + 4 + k + 1].type == "non-keyword identifier")
                                                                             {
                             
-                            symbolTable[i + 1].value /= symbolTable[arithmeticParameter].value;
+                                                                                symbolTable[i + 1].value /= symbolTable[arithmeticParameter].value;
                                                                                 foreach (var item in symbolTable)
                                                                                     {
                                                                                         if (item.lexeme == symbolTable[arithmeticParameter].lexeme)
                                                                                             {
                                                                                                 //Console.WriteLine(item);
-                                    symbolTable[i + 1].value = symbolTable[i + 1].value / item.value;
-                                    identifiers.Add(symbolTable[i + 1]);
+                                                                                                symbolTable[i + 1].value = symbolTable[i + 1].value / item.value;
+                                                                                                identifiers.Add(symbolTable[i + 1]);
                                                                                             }
                                                                                     }
                                                                             }
@@ -708,15 +697,15 @@ public partial class MainWindow : Gtk.Window
                                                                             {
                                                                                 if (Int32.Parse(symbolTable[arithmeticParameter].lexeme) == symbolTable[i + 1].value)
                                                                                     {
-                                symbolTable[i + 1].value = 1;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                    symbolTable[i + 1].value = 1;
+                                                                                    identifiers.Add(symbolTable[i + 1]);
                                 
                                                                                     }
                                                                                 else
-                                                    {
+                                                                                {
                                 
-                                symbolTable[i + 1].value = 0;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                symbolTable[i + 1].value = 0;
+                                                                                identifiers.Add(symbolTable[i + 1]);
                                 
                                 
                                                                                     }
@@ -726,18 +715,17 @@ public partial class MainWindow : Gtk.Window
                             
                                                                                 if (symbolTable[arithmeticParameter].value == symbolTable[i + 1].value)
                                                                                    {
-                               Console.WriteLine("dito");
-                               Console.WriteLine("{0} and {1}", symbolTable[arithmeticParameter].value, symbolTable[i + 1].value);
+                            
                                
                                 
                                                                                         foreach (var item in symbolTable)
                                                                                             {
                                                                                                 if (item.lexeme == symbolTable[arithmeticParameter].lexeme)
                                                                                                     {
-                                        Console.WriteLine(item);
-                                        Console.WriteLine("dito");
-                                        symbolTable[i + 1].value = 1;
-                                        identifiers.Add(symbolTable[i + 1]);
+                                                                                                        Console.WriteLine(item);
+                                                                                                      
+                                                                                                        symbolTable[i + 1].value = 1;
+                                                                                                        identifiers.Add(symbolTable[i + 1]);
                                                                                                     }
                                                                                             }
                                 
@@ -745,15 +733,15 @@ public partial class MainWindow : Gtk.Window
                                                                                     }
                                                                                 else if (symbolTable[arithmeticParameter].value != symbolTable[i + 1].value)
                                                                                     {
-                                Console.WriteLine("doon");
+                                    
                                 
                                                                                         foreach (var item in symbolTable)
                                                                                             {
                                                                                                 if (item.lexeme == symbolTable[arithmeticParameter].lexeme)
                                                                                                     {
-                                        Console.WriteLine(item);
-                                        symbolTable[i + 1].value = 0;
-                                        identifiers.Add(symbolTable[i + 1]);
+                                                                                                        Console.WriteLine(item);
+                                                                                                        symbolTable[i + 1].value = 0;
+                                                                                                        identifiers.Add(symbolTable[i + 1]);
                                                                                                     }
                                                                                             }
                                 
@@ -771,15 +759,15 @@ public partial class MainWindow : Gtk.Window
                                                                                 if (symbolTable[i + 1].value > Int32.Parse(symbolTable[arithmeticParameter].lexeme))
                                                                                     {
                                 
-                                symbolTable[i + 1].value = 1;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                        symbolTable[i + 1].value = 1;
+                                                                                        identifiers.Add(symbolTable[i + 1]);
                                 
                                                                                     }
                                                                               else
-                                                    {
-                                
-                                symbolTable[i + 1].value = 0;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                             {
+
+                                                                            symbolTable[i + 1].value = 0;
+                                                                            identifiers.Add(symbolTable[i + 1]);    
                                 
                                 
                                 
@@ -790,17 +778,17 @@ public partial class MainWindow : Gtk.Window
                             
                                                                                 if (symbolTable[i + 1].value > symbolTable[arithmeticParameter].value)
                                                                                 {
-                            
-                                symbolTable[i + 1].value = 1;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                            
+                                                                                symbolTable[i + 1].value = 1;
+                                                                                identifiers.Add(symbolTable[i + 1]);
                                 
                                 
                                                                                     }
                                                                                 else
-                                                    {
+                                                                                {
                                 
-                                symbolTable[i + 1].value = 0;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                    symbolTable[i + 1].value = 0;
+                                                                                    identifiers.Add(symbolTable[i + 1]);
                                 
                                                                                     }
                                                                            }
@@ -812,16 +800,16 @@ public partial class MainWindow : Gtk.Window
                                                                                 if ((symbolTable[i + 1].value == 0 && Int32.Parse(symbolTable[arithmeticParameter].lexeme) == 1) || (symbolTable[i + 1].value == 1 && Int32.Parse(symbolTable[arithmeticParameter].lexeme) == 0))
                                                                                     {
                                 
-                                symbolTable[i + 1].value = 1;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                    symbolTable[i + 1].value = 1;
+                                                                                    identifiers.Add(symbolTable[i + 1]);
                                                                                     }
                                                                                 else
-                                                    {
+                                                                                 {
                                 
-                                symbolTable[i + 1].value = 0;
-                                
-                                identifiers.Add(symbolTable[i + 1]);
-                                
+                                                                                    symbolTable[i + 1].value = 0;
+                                                                                    
+                                                                                    identifiers.Add(symbolTable[i + 1]);
+                                                                                    
                                                                                     }
                                                                             }
                                                                         else if (symbolTable[arithmeticParameter].type == "non-keyword identifier") //fix this, di niya nakikita yung totoong value ng arithparameter
@@ -830,16 +818,16 @@ public partial class MainWindow : Gtk.Window
                                                                                 if ((symbolTable[i + 1].value == 0 && symbolTable[arithmeticParameter].value == 1) || (symbolTable[i + 1].value == 1 && symbolTable[arithmeticParameter].value == 0))
                                                                                     {
                                 
-                                symbolTable[i + 1].value = 1;
-                                
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                    symbolTable[i + 1].value = 1;
+                                                                                    
+                                                                                    identifiers.Add(symbolTable[i + 1]);
                                                                                     }
                                                                                 else
-                                                    {
+                                                                                   {
                                 
-                                symbolTable[i + 1].value = 0;
-                                identifiers.Add(symbolTable[i + 1]);
-                                
+                                                                                    symbolTable[i + 1].value = 0;
+                                                                                    identifiers.Add(symbolTable[i + 1]);
+                                                                                    
                                                                                     }
                                                                             }
                         
@@ -852,15 +840,15 @@ public partial class MainWindow : Gtk.Window
                                                                                 if (symbolTable[i + 1].value == 1 && Int32.Parse(symbolTable[arithmeticParameter].lexeme) == 1)
                                                                                     {
                                 
-                                symbolTable[i + 1].value = 1;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                        symbolTable[i + 1].value = 1;
+                                                                                        identifiers.Add(symbolTable[i + 1]);
                                                                                     }
                                                                                else
-                                                   {
+                                                                                      {
                                 
-                                symbolTable[i + 1].value = 0;
-                                
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                    symbolTable[i + 1].value = 0;
+                                                                                    
+                                                                                    identifiers.Add(symbolTable[i + 1]);
                                 
                                                                                     }
                                                                             }
@@ -870,15 +858,15 @@ public partial class MainWindow : Gtk.Window
                                                                                 if (symbolTable[i + 1].value == 1 && symbolTable[arithmeticParameter].value == 1)
                                                                                     {
                                 
-                                symbolTable[i + 1].value = 1;
-                                
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                        symbolTable[i + 1].value = 1;
+                                                                                        
+                                                                                        identifiers.Add(symbolTable[i + 1]);
                                                                                     }
                                                                                 else
-                                                    {
+                                                                                           {
                                 
-                                symbolTable[i + 1].value = 0;
-                                identifiers.Add(symbolTable[i + 1]);
+                                                                                        symbolTable[i + 1].value = 0;
+                                                                                        identifiers.Add(symbolTable[i + 1]);
                                 
                                                                                     }
                                                                             }
@@ -892,7 +880,7 @@ public partial class MainWindow : Gtk.Window
                 
                                                     }
             
-            i = i + (l / 2);
+                                                i = i + (l / 2);
             
                                             }
                                         else exitLoop = true; break;
@@ -1113,12 +1101,12 @@ public partial class MainWindow : Gtk.Window
                     case "TALK TO THE HAND":
                         if (symbolTable[i + 1].type == "non-keyword identifier")
                             {
-                                bool isDeclaredKnock = false;
+                                bool isDeclaredTalk = false;
                                 for (int j = 0; j < i; j++)
                                 {
                                     if (symbolTable[j].lexeme == symbolTable[i + 1].lexeme)
                                         {
-                                            isDeclaredKnock = true;
+                                         isDeclaredTalk = true;
                                             for (int o = identifiers.Count - 1; o != 0; o--)
                                                 {
                                                     if (identifiers[o].lexeme == symbolTable[i + 1].lexeme)
@@ -1133,13 +1121,15 @@ public partial class MainWindow : Gtk.Window
                                                   break;
                                           }
                                   }
-                                     if (isDeclaredKnock == false)
-                                        {
-                                            Console.WriteLine("Semantic error: Variable reassigned before delcaration.");
-                                            exitLoopSemantic = true;
-                                            break;
-                                         }
-                                      }else if (symbolTable[i + 1].type == "string")
+                                if (isDeclaredTalk == false)
+                                {
+                                    Console.WriteLine("Semantic error: Variable reassigned before delcaration.");
+                                    exitLoopSemantic = true;
+                                    break;
+                                }
+
+                        }
+                        else if (symbolTable[i + 1].type == "string")
                                         {
                                             Console.WriteLine(symbolTable[i + 1].lexeme);
                                             string printString = "\n" + symbolTable[i + 1].lexeme;
@@ -1156,12 +1146,14 @@ public partial class MainWindow : Gtk.Window
                         //Console.WriteLine(symbolTable[i + 1].value);
                         break;
                     case "BECAUSE I'M GOING TO SAY PLEASE":
-                        string nextLex  = symbolTable[i+1].lexeme;
-                        
+                        string nextLex = symbolTable[i + 1].lexeme;
+                        int var_val = 0;
+
                         for (int j = 0; j < i; j++)
                         {
-                            if (symbolTable[j].lexeme == next_lex)
+                            if (symbolTable[j].lexeme == nextLex)
                             {
+                                var_val = symbolTable[j].value;
                                 break;
                             }
 
@@ -1173,20 +1165,31 @@ public partial class MainWindow : Gtk.Window
                             }
                         }
 
-                        if(symbolTable[i+1].value){
-                            ifFLAG = true;
-                            i++;
 
-                        }else{
-                            while(symbolTable[i+1].lexeme != "BULLSHIT" || symbolTable[i+1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC"){
+                        if (var_val == 1)
+                        {
+                            consoleScreen.Insert(consoleScreen.EndIter, "\nGUMANA");
+                            ifFLAG = true;
+
+                            i++;
+                            break;
+
+                        }
+                        else
+                        {
+
+                            while (symbolTable[i + 1].lexeme != "BULLSHIT" && i != symbolTable.Count-1 || symbolTable[i + 1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC" && i != symbolTable.Count-1)
+                            {
                                 i++;
                             }
                         }
-                    break;
+                        break;
 
                     case "BULLSHIT":
-                        if(ifFLAG){
-                            while(symbolTable[i+1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC"){
+                        if (ifFLAG)
+                        {
+                            while (symbolTable[i + 1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC" && i != symbolTable.Count - 1)
+                            {
                                 i++;
                             }
                         }
@@ -1197,20 +1200,20 @@ public partial class MainWindow : Gtk.Window
                         break;
 
                     case "STICK AROUND":
-                        string nextLex = symbolTable[i + 1].lexeme;
+                        string next_lex = symbolTable[i + 1].lexeme;
 
-                        for (int j = 0; j < i; j++)
+                        for (int j = 0; i < symbolTable.Count; i++)
                         {
-                            if (symbolTable[j].lexeme == nextLex)
+                            if (symbolTable[j].lexeme == next_lex)
                             {
                                 break;
                             }
 
-                            if (j == i)
+                            if (i < j)
                             {
                                 Console.WriteLine("Error no initialized variable");
                                 consoleScreen.Insert(consoleScreen.EndIter, "\nError no initialized variable");
-                                exit(1);
+                                break;
                             }
                         }
 
@@ -1255,11 +1258,9 @@ public partial class MainWindow : Gtk.Window
                 }
                 if (exitLoopSemantic) { break; }
             }
-            Console.WriteLine("IDENTIFIERS WITH VALUES");
-
+           
             foreach (var item in identifiers) Console.WriteLine(item);
 
-            //symbolTableView.Model.Clear();
             //Prints values in the Symbol Table
             //This just gets all the non-keyword identifier
             for (int i = 0; i < identifiers.Count; i++)
@@ -1267,7 +1268,6 @@ public partial class MainWindow : Gtk.Window
                 symbolTableListStore.AppendValues(identifiers[i].lexeme, identifiers[i].value);
             }
 
-            //lexemeView.Model.Clear();
             //Prints the values in the Lexeme Table
             for (int i = 0; i < matches.Count; i++)
             {
@@ -1279,6 +1279,5 @@ public partial class MainWindow : Gtk.Window
 
 
     }
-
 }
 
