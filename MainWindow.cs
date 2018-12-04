@@ -536,6 +536,7 @@ public partial class MainWindow : Gtk.Window
 
         int iterations = 0;
         int loop_length = 0;
+        bool if_loop = false;
 
         bool exitLoopSemantic = false;
         if (exitLoop == false)
@@ -1154,32 +1155,62 @@ public partial class MainWindow : Gtk.Window
                         symbolTable[i + 1].value = Int32.Parse(input);
                         //Console.WriteLine(symbolTable[i + 1].value);
                         break;
-                    /*case "BECAUSE I'M GOING TO SAY PLEASE":
-                    if (symbolTable[i + 1].value == 1)
-                    {
-                        break;
-                    }
-                    else
-                    {
-
-                    }
-                    break;*/
-
-                    case "STICK AROUND":
-                        string next_lex = symbolTable[i + 1].lexeme;
-
-                        for (int j = 0; i < symbolTable.Count; i++)
+                    case "BECAUSE I'M GOING TO SAY PLEASE":
+                        string next_lex  = symbolTable[i+1].lexeme;
+                        
+                        for (int j = 0; j < i; j++)
                         {
                             if (symbolTable[j].lexeme == next_lex)
                             {
                                 break;
                             }
 
-                            if (i < j)
+                            if (j == i)
                             {
                                 Console.WriteLine("Error no initialized variable");
                                 consoleScreen.Insert(consoleScreen.EndIter, "\nError no initialized variable");
+                                exit(1);
+                            }
+                        }
+
+                        if(symbolTable[i+1].value){
+                            if_flag = true;
+                            i++;
+
+                        }else{
+                            while(symbolTable[i+1].lexeme != "BULLSHIT" || symbolTable[i+1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC"){
+                                i++;
+                            }
+                        }
+                    break;
+
+                    case "BULLSHIT":
+                        if(if_flag){
+                            while(symbolTable[i+1].lexeme != "YOU HAVE NO RESPECT FOR LOGIC"){
+                                i++;
+                            }
+                        }
+                        break;
+
+                    case "YOU HAVE NO RESPECT FOR LOGIC":
+                        if_flag = false;
+                        break;
+
+                    case "STICK AROUND":
+                        string next_lex = symbolTable[i + 1].lexeme;
+
+                        for (int j = 0; j < i; j++)
+                        {
+                            if (symbolTable[j].lexeme == next_lex)
+                            {
                                 break;
+                            }
+
+                            if (j == i)
+                            {
+                                Console.WriteLine("Error no initialized variable");
+                                consoleScreen.Insert(consoleScreen.EndIter, "\nError no initialized variable");
+                                exit(1);
                             }
                         }
 
