@@ -1169,7 +1169,7 @@ public partial class MainWindow : Gtk.Window
                             {
                                 Console.WriteLine("Error no initialized variable");
                                 consoleScreen.Insert(consoleScreen.EndIter, "\nError no initialized variable");
-                                exit(1);
+                                break;
                             }
                         }
 
@@ -1197,11 +1197,11 @@ public partial class MainWindow : Gtk.Window
                         break;
 
                     case "STICK AROUND":
-                        string next_lex = symbolTable[i + 1].lexeme;
+                        string nextLex = symbolTable[i + 1].lexeme;
 
                         for (int j = 0; j < i; j++)
                         {
-                            if (symbolTable[j].lexeme == next_lex)
+                            if (symbolTable[j].lexeme == nextLex)
                             {
                                 break;
                             }
